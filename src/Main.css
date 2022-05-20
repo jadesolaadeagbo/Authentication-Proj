@@ -4,6 +4,7 @@
 .main{
     padding-top: 4rem;
     height: 100vh;
+    background-color: linear-gradient(#21a6ff, #64d1f8)
 }
 
 .image{

@@ -40,7 +40,7 @@ const Verify = () => {
                 <div className="product-info">
                     <h2>Product details</h2>
                     <div className="details">
-                        <div className="detail-item flex">
+                    { currentProduct[0]?.id ? <div className="detail-item flex">
                             <div>
                                 <p><b>Product Id:</b> {currentProduct[0]?.id}</p>
                                 <p><b>Product name:</b> {currentProduct[0]?.name}</p>
@@ -48,7 +48,7 @@ const Verify = () => {
                             <div className="product-image">
                                 <img src={currentProduct[0]?.image} alt="image" />
                             </div>
-                        </div>
+                        </div> : 'No data yet'}
                     </div>
                 </div>
             </div>

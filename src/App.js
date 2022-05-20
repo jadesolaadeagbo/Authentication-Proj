@@ -12,7 +12,7 @@ import {
 function App() {
   return (
     <Router>
-    <div className="app">
+    <div className="App">
       <div className="nav">
         <Nav/>
       </div>
