@@ -16,7 +16,7 @@ export default function Nav(){
                 <div className="rightNav flex">
                     {/* <a href="index.css">Home</a> &nbsp;&nbsp;&nbsp;&nbsp; */}
                     <Link to="/" exact><i className="fa fa-th-large"></i> Home</Link>
-                    <Link to="#"><i className="fa fa-history"></i> About Us</Link>
+                    <Link to="/register"><i className="fa fa-history"></i> Register A Product</Link>
                     <Link to="#"><i className="fa fa-line-chart"></i> Contact Us</Link>
                 </div>
             </div>
