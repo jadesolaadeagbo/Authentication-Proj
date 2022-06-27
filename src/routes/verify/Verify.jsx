@@ -24,7 +24,7 @@ const Verify = () => {
                         onResult={(result, error) => {
                         if (!!result) {
                             setData(result?.text);
-                            setCurrentProduct(products.filter(product => product.id == result?.text))
+                            setCurrentProduct(products.filter(product => product.id === result?.text))
                             // console.log(result.text)
                         }
 
