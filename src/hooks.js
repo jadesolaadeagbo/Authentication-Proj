@@ -3,7 +3,7 @@ import Web3Modal from "web3modal";
 import Authenticity from "./contracts/Authenticity.json";
 
 const authenticity = async ({ getRequest = true }) => {
-  const address = "0x336e7C58017B9EDC01088ab76e3B34cB6b8c47c7"; // Put contract address here
+  const address = "0x56c47d27f58e9ABb6e52c22E4513882f36E96Ae1"; // Put contract address here
   if (getRequest) {
     const provider = new ethers.providers.JsonRpcProvider({
       url: "https://rinkeby.infura.io/v3/", // Put Correct url here
