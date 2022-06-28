@@ -13,6 +13,7 @@ import {
 import Register from './routes/register/Register';
 
 function App(text) {
+  // eslint-disable-next-line 
   const [src, setSrc] = useState('');
 
   useEffect(() => {
