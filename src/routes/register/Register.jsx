@@ -5,6 +5,7 @@ import authenticity from "../../hooks";
 import "./Register.css";
 
 export default function Register() {
+  const [loading, setLoading] = useState(false);
   const [productInfo, setProductInfo] = useState({
     name: "",
     date: "",
@@ -109,12 +110,17 @@ export default function Register() {
               parseInt(productInfo.batch),
               productInfo.ingredients,
             ]);
-            const productId = Number(await contract.productCount()) - 1;
-            console.log(productId);
-            navigate(`/products/${productId}`);
+            setLoading(true)
+
+            setTimeout(async () => {
+              const productId = Number(await contract.productCount());
+              navigate(`/products/${productId}`);
+            }, 15000);
           }}
+
+          disabled={loading}
         >
-          SUBMIT
+          {loading ? "SUBMITTING..." : "SUBMIT"}
         </button>
       </form>
     </div>
