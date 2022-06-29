@@ -1,9 +1,11 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import authenticity from "../../hooks";
 import "./Register.css";
 
 export default function Register() {
+  const [loading, setLoading] = useState(false);
   const [productInfo, setProductInfo] = useState({
     name: "",
     date: "",
@@ -14,6 +16,8 @@ export default function Register() {
   });
   const setField = (key, value) =>
     setProductInfo({ ...productInfo, [key]: value });
+  const navigate = useNavigate();
+
   return (
     <div className="whole">
       <form>
@@ -59,7 +63,8 @@ export default function Register() {
         <input
           value={productInfo.serial}
           onChange={(e) => {
-            setField("serial", parseInt(e.target.value));
+            (e.target.value === "" || !isNaN(parseInt(e.target.value))) &&
+              setField("serial", e.target.value);
           }}
           type="text"
           placeholder="Serial Number"
@@ -71,7 +76,8 @@ export default function Register() {
         <input
           value={productInfo.batch}
           onChange={(e) => {
-            setField("batch", parseInt(e.target.value));
+            (e.target.value === "" || !isNaN(parseInt(e.target.value))) &&
+              setField("batch", e.target.value);
           }}
           type="text"
           placeholder="Batch Number"
@@ -100,13 +106,21 @@ export default function Register() {
               productInfo.name,
               productInfo.date,
               productInfo.expiry,
-              productInfo.serial,
-              productInfo.batch,
+              parseInt(productInfo.serial),
+              parseInt(productInfo.batch),
               productInfo.ingredients,
             ]);
+            setLoading(true)
+
+            setTimeout(async () => {
+              const productId = Number(await contract.productCount());
+              navigate(`/products/${productId}`);
+            }, 15000);
           }}
+
+          disabled={loading}
         >
-          SUBMIT
+          {loading ? "SUBMITTING..." : "SUBMIT"}
         </button>
       </form>
     </div>
