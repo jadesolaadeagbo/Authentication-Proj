@@ -1,7 +1,6 @@
 import jsQR from "jsqr";
 import { useState } from "react";
-// import BarcodeScannerComponent from "react-qr-barcode-scanner";
-import { QrReader } from "react-qr-reader";
+import { useNavigate } from "react-router-dom";
 import "./Verify.css";
 
 const Verify = () => {
@@ -13,36 +12,14 @@ const Verify = () => {
       reader.onerror = (error) => reject(error);
     });
   const [data, setData] = useState("Not Found");
-  const [products, setProducts] = useState([
-    {
-      id: "100",
-      name: "Syrup",
-      image:
-        "https://images.pexels.com/photos/1275893/pexels-photo-1275893.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    },
-  ]);
   const [currentProduct, setCurrentProduct] = useState([]);
-  // jsQR()
+  const navigate = useNavigate();
   return (
     <div className="verify-page">
       <div className="container">
         <h1>Verify Product</h1>
         <div className="wrapper flex">
           <div className="scan">
-            {/* <QrReader
-                        onResult={(result, error) => {
-                        if (!!result) {
-                            setData(result?.text);
-                            setCurrentProduct(products.filter(product => product.id === result?.text))
-                            // console.log(result.text)
-                        }
-
-                        if (!!error) {
-                            console.info(error);
-                        }
-                        }}
-                        style={{ width: '100%'}}
-                    /> */}
             <input
               type="file"
               onChange={async (e) => {
@@ -61,10 +38,9 @@ const Verify = () => {
                     const code = jsQR(myData.data, img.width, img.height)
                     if (code) {
                         alert("Found QR code " + code.data);
+                        const id = code.data.split("id: ")[1];
+                        navigate(`/products/${id}`);
                       }
-                    // console.log(img);
-                    // console.log(img.width);
-                    // console.log(img.height);
                   };
                 }
               }}
