@@ -11,7 +11,7 @@ export default function Nav(){
             <div className="container flex">
                 <Link to="/"><div className="leftNav flex">
                     <img src={tezos} width="20px" height="20px" style={{ borderRadius: "100px" }}/>
-                    <span>iAuthenticate</span>
+                    <span>SafeProd</span>
                 </div></Link>
                 <div className="rightNav flex">
                     {/* <a href="index.css">Home</a> &nbsp;&nbsp;&nbsp;&nbsp; */}
